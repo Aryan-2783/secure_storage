@@ -1,0 +1,96 @@
+<!DOCTYPE html>   
+<html>   
+<head> 
+<title>Main Page</title>
+<style>   
+    Body {  
+      background-image: url("C:/Users/aryan/Downloads/cloud-icon-12876.png");
+      background-repeat: repeat;
+      background-attachment: fixed;
+      font-family: Calibri, Helvetica, sans-serif; 
+        background-color: lightblue;   
+    }
+    button {   
+       background-color: rgba(17, 93, 160, 0.668);   
+       width: 100%;  
+        color: rgb(15, 10, 1);   
+        padding: 15px;   
+        margin: 10px 0px;   
+        border: none;   
+        cursor: pointer;   
+         }   
+         form {   
+        border: 3px solid #f1f1f1;   
+    }   
+ input[type=text], input[type=password] {   
+        width: 100%;   
+        margin: 8px 0;  
+        padding: 12px 20px;   
+        display: inline-block;   
+        border: 2px solid  rgba(17, 93, 160, 0.618);   
+        box-sizing: border-box;   
+    }  
+ button:hover {   
+        opacity: 0.7;   
+    }   
+  .cancelbtn {   
+        width: auto;   
+        padding: 10px 18px;  
+        margin: 10px 5px;  
+    }   
+        
+     
+ .container {   
+        padding: 25px;   
+        background-color: lightblue;  
+    }
+    .box{
+        width: 100%;   
+        margin: 8px 0;  
+        padding: 12px 20px;   
+        display: inline-block;   
+        border: 2px solid  rgba(17, 93, 160, 0.618);   
+        box-sizing: border-box;   
+        background-color: white;
+        height: 35px ;
+}
+</style>
+</head>
+<body>
+<center> <h1> MY SECURE STORAGE</h1> </center> 
+<div class="container"> 
+    <Label>Name:</Label>
+    <input type="text" id ='name' name="names" placeholder="Enter your name" required>
+    <LABel>File Name:</LABel>
+    <form  action="/success" method="POST">
+    <input type="text" id="name" name="name" placeholder="Enter Name of File" method="POST" required>
+        {% if name %}
+            <center>
+              <h3 style="color: blue;" class="let_space">Congrats ,{{names}} Your file {{name}} is stored!!</h3>
+            </center> 
+
+          {% endif %} 
+    <button class="Submit" id="sub" value=" Run Script " type="submit">Submit</button>
+    </div>
+    <div class="box"  id="bop"></div>
+</form>
+<form  action="/down" method="POST">
+    <input type="text" id="dname" name="dname" placeholder="Enter Name of File" method="POST" required>
+        {% if name %}
+            <center>
+              <h3 style="color: blue;" class="let_space">Congrats ,{{names}} Your file {{name}} is downloaded!!</h3>
+            </center> 
+
+          {% endif %} 
+    <button class="Submit" id="sub" value=" Run Script " type="submit">Submit</button>
+    </div>
+    <div class="box"  id="bop"></div>
+</form>
+</body>
+
+<!-- <script>
+sub.addEventListener('click',(e)=>{
+    window.location.href="reserve.html"
+});
+</script> -->
+</html>

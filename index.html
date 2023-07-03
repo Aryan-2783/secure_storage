@@ -1,0 +1,118 @@
+<!DOCTYPE html>   
+<html>   
+<head>  
+<meta name="viewport" content="width=device-width, initial-scale=1">  
+<title> Login Page </title>  
+<style>   
+Body {  
+  font-family: Calibri, Helvetica, sans-serif;  
+  background-color: pink;  
+}  
+button {   
+       background-color: #5cc45f;   
+       width: 100%;  
+        color: rgb(15, 10, 1);   
+        padding: 15px;   
+        margin: 10px 0px;   
+        border: none;   
+        cursor: pointer;   
+         }   
+ form {   
+        border: 3px solid #f1f1f1;   
+    }   
+ input[type=text], input[type=password] {   
+        width: 100%;   
+        margin: 8px 0;  
+        padding: 12px 20px;   
+        display: inline-block;   
+        border: 2px solid green;   
+        box-sizing: border-box;   
+    }  
+ button:hover {   
+        opacity: 0.7;   
+    }   
+  .cancelbtn {   
+        width: auto;   
+        padding: 10px 18px;  
+        margin: 10px 5px;  
+    }   
+        
+     
+ .container {   
+        padding: 25px;   
+        background-color: lightblue;  
+    }   
+  .Signup{
+	width:100px;
+  }	
+</style>   
+</head>    
+<body>    
+    <center> <h1> Login Form </h1> </center>    
+        <div class="container">   
+            <label>UserId: </label>   
+            <input type="text" id="email" placeholder="Enter Email " name="username" required>  
+            <label>Password : </label>   
+            <input type="password" id="pass" placeholder="Enter Password" name="password" required>  
+            <button type="submit" id="log">Login</button>   
+            <input type="checkbox" checked="checked"> Remember me   
+            <button  class="cancelbtn"> Cancel</button>   
+            Forgot <a href="#"> password? </a>   
+             <button  class="Signup" id="signlog">Signup</button><width=100px>
+        </div>       
+</body>   
+<script type="text/javascript">
+    document.getElementById("signlog").onclick = function () {
+        location.href = "signup.html";
+    };
+</script>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+  import { getDatabase ,ref,update,set} from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+  import { getAuth, createUserWithEmailAndPassword ,signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyC49I69TN6R2CNA5SK1ivQHXSvrclbtYDw",
+    authDomain: "scstorageproj.firebaseapp.com",
+    databaseURL: "https://scstorageproj-default-rtdb.firebaseio.com",
+    projectId: "scstorageproj",
+    storageBucket: "scstorageproj.appspot.com",
+    messagingSenderId: "278769423901",
+    appId: "1:278769423901:web:018ffb0f561b2e77f3d8f4"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const database=getDatabase(app);
+  const auth= getAuth();
+  log.addEventListener('click',(e)=>{
+   var email = document.getElementById('email').value;
+   var password = document.getElementById('pass').value;
+
+      signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        window.location.href= 'main.html';
+        const dt = new Date();
+         update(ref(database, 'users/' + user.uid),{
+          last_login: dt,
+        })
+
+         alert('User loged in!');
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+
+        alert(errorMessage);
+  });
+
+ });
+</script>
+</html>
